@@ -7,6 +7,12 @@ endef
 
 ###############################################
 
+pre-commit.install:
+	@pre-commit install && \
+		pre-commit install --hook-type commit-msg
+
+###############################################
+
 deploy.infra:
 	@echo 'Deploying infra'
 	${PREPARE_ENV} \
