@@ -3,20 +3,20 @@
 set -eu
 
 find_command() {
-    for cmd in "$@"; do
-        if command -v "$cmd" >/dev/null 2>&1; then
-            echo "$cmd"
-            return
-        fi
-    done
+  for cmd in "$@"; do
+    if command -v "$cmd" >/dev/null 2>&1; then
+      echo "$cmd"
+      return
+    fi
+  done
 }
 
 COMMAND=$(find_command "terraform" "opentofu")
 
 if [ -z "$COMMAND" ]; then
-    echo "Neither terraform nor opentofu is installed."
+  echo "Neither terraform nor opentofu is installed."
 else
-    echo "$COMMAND is installed."
+  echo "$COMMAND is installed."
 fi
 
 TERRAFORM_ACTION=""
@@ -37,7 +37,7 @@ printf "Workspace done: %s\n" $(terraform workspace show)
 CURRENT_WORKSPACE=$(terraform workspace show)
 
 if [ "${CURRENT_WORKSPACE}" != "${STAGE}" ]; then
-  echo "Workspace mismatch: ${CURRENT_WORKSPACE} != ${STAGE}"
+  printf "Workspace mismatch: %s != %s" $CURRENT_WORKSPACE $STAGE
   exit 1
 fi
 
