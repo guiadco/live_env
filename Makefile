@@ -28,14 +28,23 @@ infra.destroy:
 	${PREPARE_ENV} \
 		./infra/tf.sh destroy
 
+infra.plan:
+	@printf "Plan infrastructure...\n"
+	${PREPARE_ENV} \
+		./infra/tf.sh plan
+
 ###############################################
 
 mr.clean:
-	@echo 'Clean Environment'
+	@printf "Clean Environment...\n"
 	@${PREPARE_ENV} \
 		if [ $${STAGE} == "prod" ]; \
 		then \
 			echo "We don't clean PRODUCTION :)"; \
 		else \
 			./infra/tf.sh destroy && \
+			rm -rf ./infra/terraform/.terraform && \
+			rm -rf ./infra/terraform/terraform.tfstate* && \
+			rm -rf ./infra/terraform/terraform.lock.hcl && \
+			rm -rf ./infra/plan/out.plan; \
 		fi \

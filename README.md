@@ -9,4 +9,25 @@ This repository contains the Terraform or OpenTofu code to create the live envir
   - Default variables
     - `STAGE`: Stage tag for the environment
 - Initialize Terraform or OpenTofu
-- Stored backend state in remote place (S3 bucket)
+
+Exposed variables during the deployment:
+
+```
+STAGE=prod
+CURRENT_BRANCH=main
+TAG=prod-39e58ad258288cc8a0013fac8a80552ac511c619
+```
+
+## How to use
+
+- Clone this repository
+- Add your own Terraform or OpenTofu code to infra/terraform
+- Add your default variables to infra/terraform/variables.tf
+- Add your your live environment variables to infra/ci-vars.tfvars.json.tpl
+
+```
+make infra.init
+make infra.plan
+make infra.apply
+make infra.destroy
+```
