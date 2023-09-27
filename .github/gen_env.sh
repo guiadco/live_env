@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eo pipefail -c
+set -eo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 
@@ -58,5 +58,7 @@ do
       envsubst < ci-vars.tfvars.json.tpl > "data/$STAGE.tfvars.json";
   popd >/dev/null ;
 done
+
+#### Custom Env Vars ####
 
 popd >/dev/null

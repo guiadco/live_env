@@ -13,11 +13,20 @@ pre-commit.install:
 
 ###############################################
 
-deploy.infra:
-	@echo 'Deploying infra'
+infra.init:
+	@printf "InitDeploying infrastructure...\n"
 	${PREPARE_ENV} \
-		./infra/tfinit && \
-		./infra/tfrun apply -y
+		./infra/tf.sh
+
+infra.apply:
+	@printf "Deploying infrastructure...\n"
+	${PREPARE_ENV} \
+		./infra/tf.sh apply
+
+infra.destroy:
+	@printf "Destroy infrastructure...\n"
+	${PREPARE_ENV} \
+		./infra/tf.sh destroy
 
 ###############################################
 
@@ -28,5 +37,5 @@ mr.clean:
 		then \
 			echo "We don't clean PRODUCTION :)"; \
 		else \
-			./infra/tf.sh destroy -y && \
+			./infra/tf.sh destroy && \
 		fi \
