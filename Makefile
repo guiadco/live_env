@@ -35,6 +35,15 @@ infra.plan:
 
 ###############################################
 
+build:
+	@printf "Build...\n"
+	@pushd ./live && \
+		go build -o live live.go && \
+		chmod +x live && \
+		popd
+
+###############################################
+
 mr.clean:
 	@printf "Clean Environment...\n"
 	@${PREPARE_ENV} \
