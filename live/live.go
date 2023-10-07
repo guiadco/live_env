@@ -15,12 +15,13 @@ func main() {
 	bash_script := arguments[1]
 	option := arguments[2]
 	cmd, err := exec.Command(bash_script, option).Output()
-	fmt.Print(string(cmd))
 
 	if err != nil {
 		log.Printf("Error: %v", err.Error())
 		return
 	}
+
+	fmt.Print(string(cmd))
 
 	os.Exit(0)
 }
