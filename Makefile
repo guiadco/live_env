@@ -42,6 +42,24 @@ build:
 		chmod +x live && \
 		popd
 
+bin.test:
+	@printf "Test...\n"
+	@printf "Add permissions...\n"
+	@chmod +x live/live
+	@printf "Run tests...\n"
+	@printf "Run plan...\n"
+	@live/live infra/tf.sh plan
+	@printf "Run apply...\n"
+	@live/live infra/tf.sh apply
+	@printf "Run destroy...\n"
+	@live/live infra/tf.sh destroy
+
+go.test :
+	@printf "Test...\n"
+	@pushd ./live && \
+		go test -v ./... && \
+		popd
+
 ###############################################
 
 mr.clean:
