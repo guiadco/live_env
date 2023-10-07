@@ -1,10 +1,11 @@
 package main
 
 import (
-	"live/variables"
 	"log"
 	"os"
 	"os/exec"
+
+	"github.com/guiadco/live/variables"
 )
 
 func main() {
