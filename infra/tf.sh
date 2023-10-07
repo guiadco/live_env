@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -euxo pipefail
 
 find_command() {
   for cmd in "$@"; do

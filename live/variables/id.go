@@ -33,17 +33,20 @@ func gitInfos() {
 	}
 	current_branch := ref.Name().Short()
 
-	if current_branch == "prod" {
+	if current_branch == "main" || current_branch == "master" {
 		hashShort := "prod"
 		fmt.Println("Commit ID:", commit.ID())
 		fmt.Println("CURRENT_BRANCH:", current_branch)
+		os.Setenv("CURRENT_BRANCH", current_branch)
 		fmt.Println("STAGE:", hashShort)
+		os.Setenv("STAGE", hashShort)
 	} else {
 		hashLong := ref.Hash().String()
 		hashShort := hashLong[:7]
-		os.Setenv("STAGE", hashShort)
 		fmt.Println("Commit ID:", commit.ID())
 		fmt.Println("CURRENT_BRANCH:", current_branch)
+		os.Setenv("CURRENT_BRANCH", current_branch)
 		fmt.Println("STAGE:", hashShort)
+		os.Setenv("STAGE", hashShort)
 	}
 }

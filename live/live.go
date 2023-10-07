@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -9,20 +10,17 @@ import (
 )
 
 func main() {
-	arguments := os.Args
-	// switch arguments[1] {
-	// case "help":
-	// fmt.Println("Help yourself!")
-	// }
-
 	variables.CheckVariables()
-
+	arguments := os.Args
 	bash_script := arguments[1]
+	option := arguments[2]
+	cmd, err := exec.Command(bash_script, option).Output()
+	fmt.Print(string(cmd))
 
-	cmd := exec.Command(bash_script)
-	log.Printf("Running command and waiting for it to finish...")
-	err := cmd.Run()
-	log.Printf("Command finished with error: %v", err)
+	if err != nil {
+		log.Printf("Error: %v", err.Error())
+		return
+	}
 
 	os.Exit(0)
 }
