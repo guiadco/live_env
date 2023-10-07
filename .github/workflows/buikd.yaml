@@ -9,6 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v4
+        with:
+          go-version-file: "live/go.mod"
+          cache-dependency-path: |
+            live/go.sum
       - name: Build and Test
         run: make build
 
