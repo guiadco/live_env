@@ -1,4 +1,4 @@
-module live
+module github.com/guiadco/live
 
 go 1.21.1
 
