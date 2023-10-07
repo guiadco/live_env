@@ -22,6 +22,4 @@ func main() {
 	}
 
 	fmt.Print(string(cmd))
-
-	os.Exit(0)
 }
