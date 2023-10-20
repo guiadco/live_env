@@ -1,4 +1,4 @@
-module github.com/guiadco/live
+module github.com/guiadco/livecraft
 
 go 1.21.1
 

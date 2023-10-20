@@ -37,26 +37,26 @@ infra.plan:
 
 build:
 	@printf "Build...\n"
-	@pushd ./live && \
-		go build -o live live.go && \
-		chmod +x live && \
+	@pushd ./livecraft && \
+		go build -o livecraft livecraft.go && \
+		chmod +x livecraft && \
 		popd
 
 bin.test:
 	@printf "Test...\n"
 	@printf "Add permissions...\n"
-	@chmod +x live/live
+	@chmod +x livecraft/livecraft
 	@printf "Run tests...\n"
 	@printf "Run plan...\n"
-	@live/live infra/tf.sh plan
+	@livecraft/livecraft infra/tf.sh plan
 	@printf "Run apply...\n"
-	@live/live infra/tf.sh apply
+	@livecraft/livecraft infra/tf.sh apply
 	@printf "Run destroy...\n"
-	@live/live infra/tf.sh destroy
+	@livecraft/livecraft infra/tf.sh destroy
 
 go.test :
 	@printf "Test...\n"
-	@pushd ./live && \
+	@pushd ./livecraft && \
 		go test -v ./... && \
 		popd
 
