@@ -81,8 +81,4 @@ mr.clean:
 
 update-golang:
 	@printf "Update Golang...\n"
-	@pushd livecraft && \
-		go get -u && \
-		go mod tidy && \
-		go get -u ./... && \
-	popd
+	@go get -u ./... && go mod tidy
