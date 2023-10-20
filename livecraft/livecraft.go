@@ -6,7 +6,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/guiadco/live/variables"
+	"github.com/guiadco/livecraft/variables"
 )
 
 func main() {
