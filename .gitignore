@@ -57,3 +57,4 @@ out.plan
 
 # Binaries
 livecraft/livecraft
+!infra/data/prod.tfvars.json
