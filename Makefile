@@ -75,3 +75,14 @@ mr.clean:
 			rm -rf ./infra/terraform/terraform.lock.hcl && \
 			rm -rf ./infra/plan/out.plan; \
 		fi \
+
+
+###############################################
+
+update-golang:
+	@printf "Update Golang...\n"
+	@pushd livecraft && \
+		go get -u && \
+		go mod tidy && \
+		go get -u ./... && \
+	popd
