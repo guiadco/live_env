@@ -1,0 +1,27 @@
+# .github/workflows/release.yaml
+
+on:
+  release:
+    types: [created]
+
+env:
+  goversion: $(go mod edit -json | jq -r .Go)
+
+permissions:
+    contents: write 
+    packages: write
+
+jobs:
+  release-linux-amd64:
+    name: release linux/amd64
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: wangyoucao577/go-release-action@v1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        goos: linux
+        goarch: amd64
+        goversion: $goversion
+        project_path: ./livecraft
+        binary_name: livecraft
