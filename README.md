@@ -1,3 +1,5 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/guiadco/LiveCraft.svg)](https://pkg.go.dev/github.com/guiadco/LiveCraft)
+
 # LiveCraft
 
 When talking about infrastructure, a "live environment" (also known as a "production environment") refers to the actual infrastructure that supports and runs the live applications or services that end-users or customers access and use.
