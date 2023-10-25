@@ -2,7 +2,7 @@ module github.com/guiadco/LiveCraft
 
 go 1.21.1
 
-require github.com/go-git/go-git/v5 v5.9.0
+require github.com/go-git/go-git/v5 v5.10.0
 
 require (
 	dario.cat/mergo v1.0.0 // indirect
