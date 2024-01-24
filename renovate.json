@@ -1,6 +1,36 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:best-practices"],
+	"baseBranches": ["main"],
+  "commitBody": "[Renovate]",
+  "labels": ["renovate"],
+  "schedule": ["monthly"],
+	"osvVulnerabilityAlerts": true,
+	"vulnerabilityAlerts": {
+		"labels": ["security"]
+	},
+  "dependencyDashboard": true,
+	"dependencyDashboardOSVVulnerabilitySummary": "all",
+  "separateMajorMinor": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["monthly"]
+  },
+  "ignorePaths": [
+    "**/examples/**",
+    "**/__fixtures__/**"
+  ],
+  "packageRules": [
+    {
+			"semanticCommitType": "chore",
+			"matchPackagePatterns": ["*"]
+    },
+    {
+      "semanticCommitType": "fix",
+			"matchDepTypes": [
+        "dependencies",
+        "require"
+      ]
+    }
   ]
 }
